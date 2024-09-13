@@ -1,0 +1,130 @@
+/* src/components/Header.css */
+
+/* Base styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+    background-color: #333;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding doesn’t overflow */
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-link {
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-img {
+    width: 65px;
+    height: 40px;
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+  }
+  
+  .nav-links li {
+    text-transform: uppercase;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  /* Remove cart icon and keep it as text */
+  .nav-links a:hover {
+    color: #f0c040;
+  }
+  
+  .hamburger-menu {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  
+  /* Sidebar for small screens */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Hidden by default */
+    height: 100vh;
+    width: 250px;
+    background-color: #333;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;
+    transition: right 0.3s ease;
+    box-sizing: border-box;
+  }
+  
+  .show-sidebar {
+    right: 0; /* Slide in when menu is opened */
+  }
+  
+  /* Close icon for the sidebar */
+  .close-sidebar {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .sidebar-links {
+    list-style: none;
+    padding-left: 20px;
+  }
+  
+  .sidebar-links li {
+    margin-bottom: 20px;
+  }
+  
+  .sidebar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  /* Responsive styles for small screens */
+  @media (max-width: 768px) {
+    .nav {
+      display: none; /* Hide main nav */
+    }
+  
+    .hamburger-menu {
+      display: block; /* Show hamburger icon */
+    }
+  }
+  

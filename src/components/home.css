@@ -1,0 +1,24 @@
+
+/* src/components/HomePage.css */
+.home-page {
+    padding: 20px;
+  }
+  
+  .hero-banner {
+    text-align: center;
+    padding: 50px;
+    background-color: #f0f0f0;
+  }
+  
+  .category-list, .product-list {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .category-item, .product-item {
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    text-align: center;
+    width: 200px;
+  }
