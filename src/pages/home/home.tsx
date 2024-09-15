@@ -1,16 +1,12 @@
 import React from 'react';
-import './home.css'
+import './home.css';
+import { Banner } from '../../components';
 
 const Home = () => {
   return (
     <>
       <main className='home-page'>
-        <section className='hero-banner'>
-          <h1>Welcome to MyShop!</h1>
-          <p>Your one-stop shop for all products and services.</p>
-          <button>Shop Now</button>
-        </section>
-
+        <Banner />
         <section className='categories'>
           <h2>Explore Categories</h2>
           <div className='category-list'>

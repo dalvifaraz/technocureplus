@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
-import './navigation-bar.css';
+import './header.css';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);

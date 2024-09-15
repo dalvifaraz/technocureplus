@@ -19,6 +19,7 @@ body {
     z-index: 1000;
     width: 100%;
     box-sizing: border-box; /* Ensure padding doesn’t overflow */
+    max-height: 4rem;
   }
   
   .logo {

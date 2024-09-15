@@ -2,12 +2,12 @@ import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import {
   Cart,
-  ErrorPage,
+  Error as ErrorPage,
   Home,
   Products,
   ProductsDetails,
   Layout,
-} from './components';
+} from './pages';
 
 const router = createBrowserRouter([
   {
