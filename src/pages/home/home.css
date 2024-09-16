@@ -1,6 +1,7 @@
 /* src/components/HomePage.css */
 .home-page {
   padding: 20px;
+  background-color: rgb(234, 241, 241);
 }
 
 .category-list,
