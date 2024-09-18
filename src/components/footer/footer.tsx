@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <>
       <footer className='footer'>
-        <p>&copy; {new Date().getFullYear()} MyShop. All rights reserved.</p>
+        <p>Site design / logo &copy; {new Date().getFullYear()} TechMart, All rights reserved.</p>
         <nav>
           <ul className='footer-links'>
             <li>
