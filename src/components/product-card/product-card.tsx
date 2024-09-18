@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import './products.css';
-import { Product } from '../products-list/products-list-mock';
+import './product-card.css';
 import { FaCircleChevronRight } from "react-icons/fa6";
+import { ProductType } from '../../types/common';
 
-interface ProductsProps {
-  product: Product;
+interface ProductCardProps {
+  product: ProductType;
   onCardClick: (id: number) => void;
 }
 
-const Products: React.FC<ProductsProps> = ({ product, onCardClick }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, onCardClick }) => {
   const [isChevronOpen, setIsChevronOpen] = useState(false);
 
   const toggleChevron = (event: React.MouseEvent) => {
@@ -50,4 +50,4 @@ const Products: React.FC<ProductsProps> = ({ product, onCardClick }) => {
   );
 };
 
-export default Products;
+export default ProductCard;
