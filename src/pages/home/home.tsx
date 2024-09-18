@@ -1,6 +1,6 @@
 import React from 'react';
 import './home.css';
-import { Banner, Categories } from '../../components';
+import { Banner, Categories, ProductsList } from '../../components';
 
 const Home = () => {
   return (
@@ -9,16 +9,7 @@ const Home = () => {
         <Banner />
         {/* <Services /> */}
         <Categories />
-        <section className='featured-products'>
-          <h2>Featured Products</h2>
-          <div className='product-list'>
-            {/* Add Product Cards here */}
-            <div className='product-item'>Product 1</div>
-            <div className='product-item'>Product 2</div>
-            <div className='product-item'>Product 3</div>
-            {/* Add more products */}
-          </div>
-        </section>
+        <ProductsList />
       </main>
     </>
   );
