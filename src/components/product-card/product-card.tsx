@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import './product-card.css';
 import { FaCircleChevronRight } from 'react-icons/fa6';
 import { ProductType } from '../../types/common';
+import { useCart } from '../../context';
+import { useNavigate } from 'react-router-dom';
 
 interface ProductCardProps {
   product: ProductType;
@@ -10,6 +12,8 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onCardClick }) => {
   const [isChevroletDropdownOpen, setIsChevroletDropdownOpen] = useState(false);
+  const { addToCart } = useCart();
+  const navigate = useNavigate();
   const chevroletIconRef = useRef<HTMLDivElement>(null); // Ref for the Chevrolet icon
   const chevroletDropdownRef = useRef<HTMLDivElement>(null); // Ref for the popup
 
@@ -42,10 +46,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onCardClick }) => {
     };
   }, [isChevroletDropdownOpen]);
 
+  const handleBuyNow = (product: ProductType) => {
+    navigate('/cart');
+    addToCart({ ...product, quantity: 1});
+  }
+
   return (
     <div
       className={`product-card ${product.outOfStock ? 'out-of-stock' : ''}`}
-      onClick={() => !isChevroletDropdownOpen && onCardClick(product.id)}
+      onClick={() => !isChevroletDropdownOpen && !product.outOfStock && onCardClick(product.id)}
     >
       <img src={product.image} alt={product.name} className='product-image' />
       <div className='product-info'>
@@ -82,7 +91,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onCardClick }) => {
 
       {isChevroletDropdownOpen && (
         <div ref={chevroletDropdownRef} className='chevron-dropdown'>
-          <li>Add to Cart</li>
+          <li onClick={() => addToCart({ ...product, quantity: 1 })}>Add to Cart</li>
+          <li onClick={() => handleBuyNow(product)}>Buy Now</li>
           <li>Know More</li>
           <li>Wishlist</li>
           <li>Notify When Available</li>

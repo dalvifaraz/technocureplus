@@ -50,7 +50,7 @@ const Cart = () => {
         <h4>Price Details</h4>
         <div className="cart-summary__price-details">
           <span>Price ({cart.length} items)</span>
-          <span>₹ {}</span>
+          <span>₹ {totalPrice}</span>
         </div>
         {/* <div className="cart-summary__price-details">
           <span>Discount</span>
