@@ -50,7 +50,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onCardClick }) => {
       <img src={product.image} alt={product.name} className='product-image' />
       <div className='product-info'>
         <h3>{product.name}</h3>
-        <p className='product-price'>{product.price}</p>
+        <p className='product-price'>₹ {product.price}</p>
         {product.discount && (
           <p className='product-discount'>{product.discount}</p>
         )}

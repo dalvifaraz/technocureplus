@@ -3,9 +3,11 @@ import { useParams } from 'react-router-dom';
 import { AllProductList } from '../../mock';
 import { ProductType } from '../../types';
 import './products-details.css'
+import { useCart } from '../../context';
 
 const ProductDetails = () => {
   const { id = '' } = useParams<{ id: string }>();
+  const { addToCart } = useCart();
   const product = AllProductList.find((product: ProductType) => product.id === parseInt(id));
 
   if (!product) {
@@ -46,7 +48,7 @@ const ProductDetails = () => {
 
       {/* Action Buttons */}
       <div className="action-buttons">
-        <button className="add-to-cart">Add to Cart</button>
+        <button className="add-to-cart" onClick={() => addToCart({ ...product, quantity: 1 })}>Add to Cart</button>
         <button className="buy-now">Buy Now</button>
       </div>
 

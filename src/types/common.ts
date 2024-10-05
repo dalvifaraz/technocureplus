@@ -8,5 +8,6 @@ export interface ProductType {
     fewLeft?: boolean;
     outOfStock?: boolean;
     longDesc: string;
+    quantity?: number
   }
   

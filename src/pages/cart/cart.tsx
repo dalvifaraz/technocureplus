@@ -1,30 +1,76 @@
-import React from 'react';
-import './cart.css'
+import { useCart } from '../../context';
+import './cart.css';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
+  const { cart, removeFromCart, clearCart, updateQuantity } = useCart();
+  const navigate = useNavigate();
+
+  // Total Price Calculation
+  const totalPrice = cart.reduce((acc, item) => acc + parseInt(item.price) * item.quantity, 0);
+
   return (
-    <>
-      <main className='cart-page'>
-        <h1>Your Cart</h1>
-        <div className='cart-list'>
-          <div className='cart-item'>
-            <p>Product 1</p>
-            <p>Quantity: 1</p>
-            <p>Price: $100</p>
+    <div className="cart-container">
+      {/* Cart Items Section */}
+      <div className="cart-items">
+        {cart.length ? cart.map((product) => (
+          <div className="cart-item" key={product.id}>
+            <img src={product.image} alt={product.name} className="cart-item__image" />
+            <div className="cart-item__details">
+              <h4>{product.name}</h4>
+              <p>Seller: {`Seller info`}</p>
+              <div className="cart-item__price">₹{product.price}</div>
+              <div className="cart-item__actions">
+                {/* <button onClick={() => handleDecrease(product.id)}>-</button> */}
+                <button onClick={() => updateQuantity(product.id, false)}>-</button>
+                <span>{product.quantity}</span>
+                {/* <button onClick={() => handleIncrease(product.id)}>+</button> */}
+                <button onClick={() => updateQuantity(product.id, true)}>+</button>
+                <button style={{ width: '80px'}} className="cart-item__remove" onClick={() => removeFromCart(product.id)}>
+                  Remove
+                </button>
+              </div>
+            </div>
           </div>
-          <div className='cart-item'>
-            <p>Product 2</p>
-            <p>Quantity: 2</p>
-            <p>Price: $200</p>
-          </div>
-          {/* Render more cart items or dynamically from state */}
+        )): (
+          <>
+          <p>Your cart is empty</p>
+          <button onClick={() => navigate('/products')}>Shop Now</button>
+          </>
+        )}
+        {cart.length > 0 && (
+          <button className="clear-cart-button" onClick={clearCart}>
+            Clear Cart
+          </button>
+        )}
+      </div>
+
+      {/* Price Summary Section */}
+      {cart.length > 0 && <div className="cart-summary">
+        <h4>Price Details</h4>
+        <div className="cart-summary__price-details">
+          <span>Price ({cart.length} items)</span>
+          <span>₹ {}</span>
         </div>
-        <div className='cart-summary'>
-          <h2>Total: $300</h2>
-          <button>Proceed to Checkout</button>
+        {/* <div className="cart-summary__price-details">
+          <span>Discount</span>
+          <span>-₹736</span>
+        </div> */}
+        <div className="cart-summary__price-details">
+          <span>Platform Fee</span>
+          <span>₹3</span>
         </div>
-      </main>
-    </>
+        <div className="cart-summary__price-details">
+          <span>Delivery Charges</span>
+          <span>₹62</span>
+        </div>
+        <div className="cart-summary__total">
+          Total Amount
+          <span>₹ {totalPrice + 3 + 62}</span>
+        </div>
+        <button className="place-order-button">Place Order</button>
+      </div>}
+    </div>
   );
 };
 

@@ -11,6 +11,7 @@ import {
   PrivacyPolicy,
   TermsOfService
 } from './pages';
+import { CartProvider } from './context';
 
 const router = createBrowserRouter([
   {
@@ -60,7 +61,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div className='App'>
-      <RouterProvider router={router} />
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
     </div>
   );
 }
