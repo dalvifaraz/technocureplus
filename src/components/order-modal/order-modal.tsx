@@ -16,22 +16,6 @@ const sendEmail = async (email: any, message: any) => {
   }
 };
 
-// // Twilio WhatsApp API Function
-// const sendWhatsAppMessage = async (phone: any, message: any) => {
-//   try {
-//     // Call your WhatsApp sending API with the message and phone number
-//     await fetch('/https://api.twilio.com/2010-04-01/Accounts/AC9acc805272876f6dea9cd773c4e0b58c/Messages.json', {
-//       method: 'POST',
-//       body: JSON.stringify({
-//         to: phone,
-//         message: message,
-//       }),
-//     });
-//   } catch (error) {
-//     console.log('Error sending WhatsApp message:', error);
-//   }
-// };
-
 
 Modal.setAppElement('#root'); // Modal accessibility fix
 
