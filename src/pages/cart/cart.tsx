@@ -1,16 +1,29 @@
+import { useState } from 'react';
 import { useCart } from '../../context';
 import './cart.css';
 import { useNavigate } from 'react-router-dom';
+import PlaceOrderModal from '../../components/order-modal/order-modal';
 
 const Cart = () => {
   const { cart, removeFromCart, clearCart, updateQuantity } = useCart();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
   // Total Price Calculation
   const totalPrice = cart.reduce((acc, item) => acc + parseInt(item.price) * item.quantity, 0);
 
+  const handlePlaceOrder = () => {
+    setIsModalOpen(true);
+  }
+
   return (
     <div className="cart-container">
+      <PlaceOrderModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        cart={cart}
+        clearCart={clearCart}
+      />
       {/* Cart Items Section */}
       <div className="cart-items">
         {cart.length ? cart.map((product) => (
@@ -68,7 +81,7 @@ const Cart = () => {
           Total Amount
           <span>₹ {totalPrice + 3 + 62}</span>
         </div>
-        <button className="place-order-button">Place Order</button>
+        <button className="place-order-button" onClick={handlePlaceOrder}>Place Order</button>
       </div>}
     </div>
   );
